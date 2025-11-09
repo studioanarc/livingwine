@@ -18,7 +18,7 @@ export const Colors = {
   naturalWineRed: '#8B3A3A',     // Deep wine red
   orangeWine: '#E67E22',         // Orange/amber
   pinkWine: '#E9A6A6',           // Rosé pink
-  cloudyWhite: '#F9F6EE',        // Slightly cloudy white
+  tipsyWhite: '#F9F6EE',        // Slightly tipsy white
 
   // Earth Tones
   oliveGreen: '#7C9473',    // Subtle olive
@@ -61,7 +61,7 @@ export const SemanticColors = {
     primary: Colors.cream,
     secondary: Colors.warmBeige,
     tertiary: Colors.offWhite,
-    card: Colors.cloudyWhite,
+    card: Colors.tipsyWhite,
     overlay: Colors.overlay,
     overlayLight: Colors.overlayLight,
   },
@@ -110,7 +110,7 @@ export const SemanticColors = {
   wine: {
     red: Colors.naturalWineRed,
     orange: Colors.orangeWine,
-    white: Colors.cloudyWhite,
+    white: Colors.tipsyWhite,
     rose: Colors.pinkWine,
     purple: Colors.grapePurple,
   },

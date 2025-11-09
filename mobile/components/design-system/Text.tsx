@@ -66,7 +66,7 @@ export interface CustomTextProps extends RNTextProps {
  *
  * @example
  * // Display text with letterpress
- * <Text variant="display">Cloudy</Text>
+ * <Text variant="display">Tipsy</Text>
  *
  * @example
  * // Body text without letterpress

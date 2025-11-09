@@ -58,7 +58,7 @@ export default function DesignSystemDemo() {
       {/* Header Section */}
       <View style={styles.section}>
         <DisplayLargeText color={Colors.naturalWineRed}>
-          Cloudy
+          Tipsy
         </DisplayLargeText>
         <BodyLargeText color={Colors.warmGray}>
           Design System Showcase

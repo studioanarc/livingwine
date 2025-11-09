@@ -1,6 +1,6 @@
 -- Natural Wine Tracking App Database Schema
 -- Database: PostgreSQL 14+
--- Design for "Cloudy" app
+-- Design for "Tipsy" app
 
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";

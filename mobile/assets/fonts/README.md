@@ -1,4 +1,4 @@
-# Fonts for Cloudy - Natural Wine App
+# Fonts for Tipsy - Natural Wine App
 
 This directory contains the custom fonts used in the Tipsy aesthetic design system.
 
@@ -126,7 +126,7 @@ Fonts are defined in the Typography constants and are automatically applied thro
 import { Text, H1, BodyText } from '@/components/design-system';
 
 // Display text uses Fraunces
-<Text variant="display">Cloudy</Text>
+<Text variant="display">Tipsy</Text>
 
 // Headings use Fraunces Bold
 <H1>Welcome to Natural Wine</H1>

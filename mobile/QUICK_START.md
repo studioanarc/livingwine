@@ -1,4 +1,4 @@
-# Cloudy Design System - Quick Start Guide
+# Tipsy Design System - Quick Start Guide
 
 Get up and running with the Tipsy aesthetic design system in 5 minutes.
 
@@ -129,7 +129,7 @@ export default function ExampleScreen() {
 
       <View style={{ padding: 20 }}>
         {/* Header */}
-        <H1>Welcome to Cloudy</H1>
+        <H1>Welcome to Tipsy</H1>
         <BodyText>Natural wine tracking for enthusiasts</BodyText>
 
         {/* Card */}
@@ -391,4 +391,4 @@ For questions or issues:
 
 **Happy Building!** 🍷
 
-The Cloudy design system is now ready to use. Start creating beautiful, organic interfaces for your natural wine tracking app.
+The Tipsy design system is now ready to use. Start creating beautiful, organic interfaces for your natural wine tracking app.

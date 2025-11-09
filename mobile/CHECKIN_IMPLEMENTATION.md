@@ -1,7 +1,7 @@
 # Check-in and OCR Functionality - Implementation Summary
 
 ## Overview
-Complete implementation of check-in and OCR functionality for the Natural Wine Tracking app (Cloudy/Tipsy). This includes camera-based label scanning, wine information extraction, and comprehensive check-in creation with ratings, notes, and contextual information.
+Complete implementation of check-in and OCR functionality for the Natural Wine Tracking app (Tipsy/Tipsy). This includes camera-based label scanning, wine information extraction, and comprehensive check-in creation with ratings, notes, and contextual information.
 
 ## Files Created
 
@@ -156,7 +156,7 @@ Update `/home/user/livingwine/mobile/app.json` to include camera permissions:
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow Cloudy to access your camera to scan wine labels."
+          "cameraPermission": "Allow Tipsy to access your camera to scan wine labels."
         }
       ]
     ],

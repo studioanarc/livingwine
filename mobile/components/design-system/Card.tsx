@@ -285,7 +285,7 @@ export const ProducerCard: React.FC<ProducerCardProps> = ({
 export const EventCard: React.FC<CardProps> = (props) => (
   <Card
     variant="floating"
-    backgroundColor={Colors.cloudyWhite}
+    backgroundColor={Colors.tipsyWhite}
     bordered
     borderColor={Colors.mondrianBlue}
     borderWidth={2}

@@ -1,6 +1,6 @@
 # Design System Implementation Summary
 
-Complete visual design system for the Cloudy Natural Wine app following the **Tipsy Aesthetic**.
+Complete visual design system for the Tipsy Natural Wine app following the **Tipsy Aesthetic**.
 
 ## ✅ What Was Created
 
@@ -89,7 +89,7 @@ Custom text component with letterpress effects
 
 **Usage:**
 ```tsx
-<Text variant="display">Cloudy</Text>
+<Text variant="display">Tipsy</Text>
 <H1>Natural Wine Tracker</H1>
 <BodyText>Discover wines...</BodyText>
 ```
@@ -385,7 +385,7 @@ export default function MyScreen() {
     <View style={{ backgroundColor: Colors.cream }}>
       <BackgroundBlob position="top-right" />
 
-      <H1>Welcome to Cloudy</H1>
+      <H1>Welcome to Tipsy</H1>
 
       <Card variant="raised">
         <BodyText>Natural wine tracking app</BodyText>
@@ -434,7 +434,7 @@ export default function MyScreen() {
 - ✅ Balanced visual weight
 
 ### 4. Natural Wine Values
-- ✅ "Cloudy" aesthetic with halftone patterns
+- ✅ "Tipsy" aesthetic with halftone patterns
 - ✅ Earth tones and organic colors
 - ✅ Handcrafted feel
 - ✅ Unpretentious but refined

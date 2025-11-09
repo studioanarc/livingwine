@@ -1,6 +1,6 @@
 # Design System Dependencies
 
-Required packages for the Cloudy design system to function properly.
+Required packages for the Tipsy design system to function properly.
 
 ## Core Dependencies
 
@@ -114,9 +114,9 @@ Update your `app.json`:
 ```json
 {
   "expo": {
-    "name": "Cloudy",
-    "slug": "cloudy-natural-wine",
-    "scheme": "cloudy",
+    "name": "Tipsy",
+    "slug": "tipsy-natural-wine",
+    "scheme": "tipsy",
     "plugins": [
       "expo-router",
       "expo-font"

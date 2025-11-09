@@ -211,7 +211,7 @@ export const slightRotation = (
  * Combines subtle shadow and border for paper-like appearance
  */
 export const paperTexture = (): ViewStyle => ({
-  backgroundColor: Colors.cloudyWhite,
+  backgroundColor: Colors.tipsyWhite,
   ...shadow3D('sm', Colors.shadowLight),
   borderWidth: 1,
   borderColor: Colors.lightGray,

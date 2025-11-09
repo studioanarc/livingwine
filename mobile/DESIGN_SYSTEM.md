@@ -1,4 +1,4 @@
-# Cloudy - Design System Documentation
+# Tipsy - Design System Documentation
 
 Complete design system for the Natural Wine Tracking mobile app, following the **Tipsy Aesthetic**.
 
@@ -153,7 +153,7 @@ TextStyles.accent          // 20px, Caveat
 import { Text, H1, BodyText } from '@/components/design-system';
 
 // Display text with automatic letterpress
-<Text variant="display">Cloudy</Text>
+<Text variant="display">Tipsy</Text>
 
 // Heading
 <H1>Natural Wine Tracker</H1>
@@ -683,7 +683,7 @@ export default function ProducerScreen() {
 - Professional typography hierarchy
 
 ### 4. Natural Wine Values
-- Unfiltered = cloudy aesthetic (halftone patterns)
+- Unfiltered = tipsy aesthetic (halftone patterns)
 - Organic = earth tones and olive greens
 - Authentic = handcrafted feel
 
@@ -797,7 +797,7 @@ const customTextStyle = {
 
 ## 📄 License
 
-Design system created for Cloudy - Natural Wine Tracking App
+Design system created for Tipsy - Natural Wine Tracking App
 
 Fonts licenses:
 - Fraunces: SIL Open Font License
