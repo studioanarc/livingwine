@@ -1,14 +1,14 @@
-# 🍷 Cloudy - Natural Wine Tracking & Discovery
+# 🍷 Tipsy - Natural Wine Tracking & Discovery
 
 A social platform for natural and low-intervention wine enthusiasts to discover, track, and share their wine experiences with transparency and community at its core.
 
 ## 📖 Overview
 
-**Cloudy** is like Untappd, but reimagined for the natural wine community. It combines social check-ins with deep production transparency, allowing users to discover wines that align with their values while building a knowledge base around natural winemaking practices.
+**Tipsy** is like Untappd, but reimagined for the natural wine community. It combines social check-ins with deep production transparency, allowing users to discover wines that align with their values while building a knowledge base around natural winemaking practices.
 
-### Why "Cloudy"?
+### Why "Tipsy"?
 
-Natural wines are often unfiltered, resulting in a cloudy appearance—a badge of authenticity. The name celebrates what makes natural wine unique while being memorable and approachable.
+Natural wines are often unfiltered, resulting in a tipsy appearance—a badge of authenticity. The name celebrates what makes natural wine unique while being memorable and approachable.
 
 ## ✨ Core Features
 
@@ -113,13 +113,13 @@ livingwine/
 
 4. **Create PostgreSQL database**
    ```bash
-   createdb cloudy_db
+   createdb tipsy_db
    ```
 
 5. **Run database migrations**
    ```bash
    # Import the schema
-   psql cloudy_db < ../DATABASE_SCHEMA.sql
+   psql tipsy_db < ../DATABASE_SCHEMA.sql
    ```
 
 6. **Start development server**

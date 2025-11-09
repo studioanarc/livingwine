@@ -163,4 +163,29 @@ router.post('/login',
   }
 );
 
+// GET /api/v1/auth/guest - Get guest token
+router.get('/guest', (req, res) => {
+  try {
+    // Generate a guest token with no user ID
+    const guestToken = jwt.sign(
+      { isGuest: true },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_GUEST_EXPIRE || '24h' }
+    );
+
+    res.json({
+      message: 'Guest token generated successfully',
+      token: guestToken,
+      isGuest: true,
+      expiresIn: process.env.JWT_GUEST_EXPIRE || '24h'
+    });
+  } catch (error) {
+    console.error('Guest token generation error:', error);
+    res.status(500).json({
+      error: 'Failed to generate guest token',
+      message: error.message
+    });
+  }
+});
+
 module.exports = router;

@@ -1,0 +1,75 @@
+{
+  "expo": {
+    "name": "Tipsy",
+    "slug": "tipsy-natural-wine",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "scheme": "tipsy",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FCF8F2"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tipsy.naturalwine",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Tipsy needs access to your camera to scan wine labels and capture check-in photos.",
+        "NSLocationWhenInUseUsageDescription": "Tipsy uses your location to find nearby natural wine venues and tag check-ins.",
+        "NSPhotoLibraryUsageDescription": "Tipsy needs access to your photo library to upload wine photos."
+      }
+    },
+    "android": {
+      "package": "com.tipsy.naturalwine",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FCF8F2"
+      },
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "config": {
+        "googleMaps": {
+          "apiKey": "YOUR_GOOGLE_MAPS_API_KEY"
+        }
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Tipsy to access your camera to scan wine labels and take photos."
+        }
+      ],
+      [
+        "react-native-maps",
+        {
+          "locationWhenInUsePermission": "Allow Tipsy to use your location to find nearby natural wine venues."
+        }
+      ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    }
+  }
+}

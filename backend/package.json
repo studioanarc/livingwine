@@ -1,7 +1,7 @@
 {
-  "name": "cloudy-backend",
+  "name": "tipsy-backend",
   "version": "1.0.0",
-  "description": "Backend API for Cloudy - Natural Wine Tracking App",
+  "description": "Backend API for Tipsy - Natural Wine Tracking App",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
@@ -36,7 +36,12 @@
     "cloudinary": "^1.41.1",
     "uuid": "^9.0.1",
     "sequelize": "^6.35.2",
-    "ws": "^8.16.0"
+    "ws": "^8.16.0",
+    "puppeteer": "^21.6.1",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.2",
+    "bull": "^4.12.0",
+    "@google-cloud/vision": "^4.0.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.2",

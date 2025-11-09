@@ -7,13 +7,19 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 
 const { sequelize, testConnection } = require('./config/database');
+const scrapingQueue = require('./services/scraping/queue');
 
-// Import routes (will create these next)
+// Import routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const wineRoutes = require('./routes/wines');
 const producerRoutes = require('./routes/producers');
 const checkinRoutes = require('./routes/checkins');
+const venueRoutes = require('./routes/venues');
+const oauthRoutes = require('./routes/oauth');
+const mapRoutes = require('./routes/map');
+const ocrRoutes = require('./routes/ocr');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -80,11 +86,16 @@ app.use(`/api/${API_VERSION}/users`, userRoutes);
 app.use(`/api/${API_VERSION}/wines`, wineRoutes);
 app.use(`/api/${API_VERSION}/producers`, producerRoutes);
 app.use(`/api/${API_VERSION}/checkins`, checkinRoutes);
+app.use(`/api/${API_VERSION}/venues`, venueRoutes);
+app.use(`/api/${API_VERSION}/oauth`, oauthRoutes);
+app.use(`/api/${API_VERSION}/map`, mapRoutes);
+app.use(`/api/${API_VERSION}/ocr`, ocrRoutes);
+app.use(`/api/${API_VERSION}/admin`, adminRoutes);
 
 // API documentation endpoint
 app.get(`/api/${API_VERSION}`, (req, res) => {
   res.json({
-    name: 'Cloudy API',
+    name: 'Tipsy API',
     version: API_VERSION,
     description: 'Natural Wine Tracking & Discovery Platform',
     endpoints: {
@@ -92,9 +103,14 @@ app.get(`/api/${API_VERSION}`, (req, res) => {
       users: `/api/${API_VERSION}/users`,
       wines: `/api/${API_VERSION}/wines`,
       producers: `/api/${API_VERSION}/producers`,
-      checkins: `/api/${API_VERSION}/checkins`
+      checkins: `/api/${API_VERSION}/checkins`,
+      venues: `/api/${API_VERSION}/venues`,
+      oauth: `/api/${API_VERSION}/oauth`,
+      map: `/api/${API_VERSION}/map`,
+      ocr: `/api/${API_VERSION}/ocr`,
+      admin: `/api/${API_VERSION}/admin`
     },
-    documentation: 'https://github.com/yourusername/cloudy/wiki/API-Documentation'
+    documentation: 'https://github.com/yourusername/tipsy/wiki/API-Documentation'
   });
 });
 
@@ -158,10 +174,23 @@ const startServer = async () => {
       console.log('✓ Database models synced');
     }
 
+    // Initialize scraping queue (only if Redis is configured)
+    if (process.env.REDIS_HOST || process.env.ENABLE_SCRAPING_QUEUE === 'true') {
+      try {
+        await scrapingQueue.initialize();
+        console.log('✓ Scraping queue initialized');
+      } catch (error) {
+        console.warn('⚠ Scraping queue initialization failed:', error.message);
+        console.warn('  Scraping features will be unavailable');
+      }
+    } else {
+      console.log('ℹ Scraping queue disabled (Redis not configured)');
+    }
+
     // Start server
     app.listen(PORT, () => {
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-      console.log(`🍷 Cloudy API Server`);
+      console.log(`🍷 Tipsy API Server`);
       console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
       console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
       console.log(`Port: ${PORT}`);
@@ -179,12 +208,14 @@ const startServer = async () => {
 // Handle graceful shutdown
 process.on('SIGTERM', async () => {
   console.log('SIGTERM received, shutting down gracefully...');
+  await scrapingQueue.shutdown();
   await sequelize.close();
   process.exit(0);
 });
 
 process.on('SIGINT', async () => {
   console.log('\nSIGINT received, shutting down gracefully...');
+  await scrapingQueue.shutdown();
   await sequelize.close();
   process.exit(0);
 });

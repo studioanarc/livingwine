@@ -131,7 +131,7 @@ Natural wines have unique characteristics that differ from conventional wines:
 - Floral/aromatic
 - Earthy/forest floor
 - Citrus/bright acidity
-- Cloudy/hazy appearance (with sediment note)
+- Tipsy/hazy appearance (with sediment note)
 
 **Mouthfeel**:
 - Tannic structure
@@ -390,7 +390,7 @@ Based on natural wine culture, playfulness, and memorability:
 ### Top Choices:
 
 1. **Vinethread** - Connects the thread from vine to glass
-2. **Cloudy** - Playful reference to unfiltered natural wines
+2. **Tipsy** - Playful reference to unfiltered natural wines
 3. **RootStock** - Foundation of viticulture + building a stock of favorites
 4. **NaturCheck** - Direct and functional (check-in for natural wine)
 5. **GrapeTruth** - Transparency + wordplay
@@ -400,7 +400,7 @@ Based on natural wine culture, playfulness, and memorability:
 9. **Unfiltered** - Literal (natural wines often unfiltered) + metaphorical (honest reviews)
 10. **SipStory** - Every wine has a story
 
-### Personal Favorite: **Cloudy** ☁️🍷
+### Personal Favorite: **Tipsy** ☁️🍷
 - Short, memorable, one word
 - Distinctive in app stores
 - Embraces what makes natural wine unique (cloudiness = unfiltered = authentic)

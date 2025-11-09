@@ -25,6 +25,10 @@ CREATE TABLE users (
     is_private BOOLEAN DEFAULT false,
     email_verified BOOLEAN DEFAULT false,
 
+    -- OAuth support
+    oauth_provider VARCHAR(50),
+    oauth_id VARCHAR(255),
+
     -- Reputation & credibility
     credibility_score INTEGER DEFAULT 100,
     user_level VARCHAR(20) DEFAULT 'explorer', -- explorer, enthusiast, advocate, steward
@@ -39,6 +43,9 @@ CREATE TABLE users (
     last_login_at TIMESTAMP,
     deleted_at TIMESTAMP -- Soft delete
 );
+
+-- OAuth unique constraint
+CREATE UNIQUE INDEX idx_users_oauth ON users(oauth_provider, oauth_id) WHERE oauth_provider IS NOT NULL AND oauth_id IS NOT NULL;
 
 CREATE TABLE user_preferences (
     user_id UUID PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
@@ -169,6 +176,8 @@ CREATE TABLE wines (
     grape_varietals JSONB DEFAULT '[]', -- ["gamay", "pinot-noir"]
     region VARCHAR(100),
     appellation VARCHAR(100),
+    seriousness_level INTEGER CHECK (seriousness_level >= 1 AND seriousness_level <= 5),
+    food_pairing_style VARCHAR(20), -- solo, companion, versatile
 
     -- Production details
     alcohol_percentage DECIMAL(4,2),
@@ -313,6 +322,25 @@ CREATE TABLE venues (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP
 );
+
+-- ============================================
+-- VENUE DATA SOURCES TRACKING
+-- ============================================
+
+CREATE TABLE venue_sources (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    venue_id UUID NOT NULL REFERENCES venues(id) ON DELETE CASCADE,
+
+    -- Data source information
+    source_type VARCHAR(50) NOT NULL, -- user_added, web_scrape, ocr_label, manual
+    source_url TEXT,
+    verified BOOLEAN DEFAULT false,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_venue_sources_venue ON venue_sources(venue_id);
+CREATE INDEX idx_venue_sources_type ON venue_sources(source_type);
 
 -- ============================================
 -- CHECK-INS
@@ -662,6 +690,48 @@ CREATE INDEX idx_venues_search ON venues USING gin(to_tsvector('english', name |
 CREATE INDEX idx_producers_location ON producers USING GIST(coordinates);
 CREATE INDEX idx_venues_location ON venues USING GIST(coordinates);
 CREATE INDEX idx_checkins_location ON checkins USING GIST(location_coordinates);
+
+-- ============================================
+-- MAP CLUSTERING MATERIALIZED VIEW
+-- ============================================
+
+-- Materialized view for map clustering combining producers and venues
+CREATE MATERIALIZED VIEW map_cluster_points AS
+SELECT
+    id,
+    name,
+    'producer' AS entity_type,
+    coordinates,
+    country,
+    region,
+    NULL::VARCHAR(50) AS venue_type,
+    logo_url AS image_url,
+    website,
+    NULL::VARCHAR(100) AS instagram_handle,
+    created_at
+FROM producers
+WHERE deleted_at IS NULL AND coordinates IS NOT NULL
+
+UNION ALL
+
+SELECT
+    id,
+    name,
+    'venue' AS entity_type,
+    coordinates,
+    country,
+    city AS region,
+    venue_type,
+    (photos->0)::VARCHAR(500) AS image_url,
+    website,
+    instagram AS instagram_handle,
+    created_at
+FROM venues
+WHERE deleted_at IS NULL AND coordinates IS NOT NULL;
+
+-- Index on the materialized view for spatial queries
+CREATE INDEX idx_map_cluster_points_coordinates ON map_cluster_points USING GIST(coordinates);
+CREATE INDEX idx_map_cluster_points_entity_type ON map_cluster_points(entity_type);
 
 -- ============================================
 -- TRIGGERS & FUNCTIONS

@@ -2,6 +2,7 @@ const User = require('./User');
 const Producer = require('./Producer');
 const Wine = require('./Wine');
 const CheckIn = require('./CheckIn');
+const Venue = require('./Venue');
 
 // Define associations
 
@@ -22,9 +23,14 @@ Wine.belongsTo(User, { foreignKey: 'createdByUserId', as: 'createdBy' });
 CheckIn.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 CheckIn.belongsTo(Wine, { foreignKey: 'wineId', as: 'wine' });
 
+// Venue associations
+Venue.belongsTo(User, { foreignKey: 'ownerUserId', as: 'owner' });
+Venue.belongsTo(User, { foreignKey: 'verifiedByUserId', as: 'verifiedBy' });
+
 module.exports = {
   User,
   Producer,
   Wine,
-  CheckIn
+  CheckIn,
+  Venue
 };
