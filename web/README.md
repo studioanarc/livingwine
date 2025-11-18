@@ -1,6 +1,6 @@
-# Cloudy Web Application
+# 🍷 Tipsy Web App
 
-The web application for Cloudy - Natural Wine Tracking & Discovery platform.
+Next.js 14 web application for Tipsy - Natural Wine Tracking & Discovery
 
 ## Tech Stack
 
@@ -115,7 +115,7 @@ npm run start
 
 ### Styling
 - Tailwind CSS v4 with custom design system
-- Cloudy brand colors (burgundy, amber, sky blue)
+- Tipsy brand colors (burgundy, amber, sky blue)
 - Dark mode support
 - Responsive design
 - Custom scrollbar and focus styles

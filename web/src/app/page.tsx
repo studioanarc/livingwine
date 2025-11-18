@@ -7,7 +7,7 @@ export default function Home() {
         {/* Hero Section */}
         <div className="flex flex-col items-center gap-4">
           <h1 className="text-6xl font-bold tracking-tight text-primary">
-            Cloudy
+            Tipsy
           </h1>
           <p className="max-w-2xl text-xl text-muted-foreground">
             A social platform for natural and low-intervention wine enthusiasts
@@ -37,10 +37,16 @@ export default function Home() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link
+            href="/map"
+            className="rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-primary/90"
+          >
+            🗺️ Explore Map
+          </Link>
           <Link
             href="/register"
-            className="rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-dark"
+            className="rounded-lg border border-border px-8 py-3 text-sm font-medium transition-colors hover:bg-muted"
           >
             Get Started
           </Link>
